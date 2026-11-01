@@ -1,0 +1,17 @@
+{
+  "$comment": "Optional. Copy to taxonomy.json (or point TOOL_GATEWAY_TAXONOMY at it). Shows the model a short outline: domains -> groups (tool-name regex, first match wins) -> tools; skill categories match the skill NAME (first match wins).",
+  "domains": [
+    { "id": "browser", "title": "Browser automation", "summary": "open pages, click, fill forms, screenshots", "servers": ["playwright"] },
+    { "id": "docs", "title": "Library documentation", "summary": "look up current docs for a library", "servers": ["context7"] }
+  ],
+  "groups": {
+    "playwright": [
+      { "id": "navigate", "title": "Navigation", "match": "navigate|tab|back|forward" },
+      { "id": "interact", "title": "Interaction", "match": "click|type|fill|select|press|hover|drag" }
+    ]
+  },
+  "skillCategories": [
+    { "id": "documents", "title": "Documents (pdf, docx, xlsx, pptx)", "match": "pdf|docx|xlsx|pptx" },
+    { "id": "design", "title": "Design and UI", "match": "design|ui|css|canvas" }
+  ]
+}

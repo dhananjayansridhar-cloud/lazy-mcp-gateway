@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "playwright": { "command": ["npx", "-y", "@playwright/mcp@latest"] },
+    "context7": { "url": "https://mcp.context7.com/mcp" },
+    "desktop-commander": { "command": ["npx", "-y", "@wonderwhy-er/desktop-commander@latest"] },
+    "my-server": { "command": ["node", "/path/to/server.js"], "env": { "API_KEY": "set-it-here-or-in-your-shell" } }
+  },
+  "gateway": ["playwright", "context7", "desktop-commander"]
+}

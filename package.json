@@ -1,0 +1,13 @@
+{
+  "name": "lazy-mcp-gateway",
+  "version": "1.1.0",
+  "description": "A lazy MCP gateway: five small tools (find_tools, describe_tool, call_tool, find_skills, load_skill) instead of every MCP tool schema and skill listing, so small and local models are not drowned in context.",
+  "type": "module",
+  "main": "gateway.mjs",
+  "bin": { "lazy-mcp-gateway": "gateway.mjs" },
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node test/smoke.mjs", "index": "node gateway.mjs --index" },
+  "keywords": ["mcp", "model-context-protocol", "gateway", "skills", "local-llm", "claude-code", "token-saving"],
+  "license": "MIT",
+  "dependencies": { "@modelcontextprotocol/sdk": "1.32.1" }
+}
