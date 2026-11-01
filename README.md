@@ -1,6 +1,12 @@
 # lazy-mcp-gateway
 
-**One small MCP server that stands in front of all your other MCP servers and your skills.** Instead of loading every tool schema and skill description into the model's context, your AI sees **five tiny tools** and pulls in only what it needs, when it needs it.
+### Progressive disclosure for local models: hundreds of skills, five tools in context.
+
+Your local model isn't dumb, it's drowning. Load ten MCP servers and a skill library directly and it sees 150 tool schemas and every skill description before it has said a word: context full. This gateway reveals them **one step at a time, only when needed** (progressive disclosure), so a small model can work with hundreds of skills and still have room to think.
+
+![Same small model: buried under everything loaded up front, versus calm behind lazy-mcp-gateway](docs/post.png)
+
+**One small MCP server that stands in front of all your other MCP servers and your skills.** Instead of loading every tool schema and skill description into the model's context, your AI sees **five tiny tools** and pulls in only what it needs, when it needs it. "Hundreds of skills" is meant literally: the limit is your disk and how well the search finds things, not the context window.
 
 It works with **any MCP-capable harness** (Claude Code, Claude Desktop, Cursor, VS Code, Codex CLI, Gemini CLI, Cline, Windsurf, Zed, opencode, pi, and others) and with **any model that can call tools** (Claude, GPT, Gemini, Qwen, Llama, DeepSeek, Gemma, local llama.cpp / Ollama / LM Studio models...). It is most useful for **small and local models with a small context window**, which choke when ten MCP servers dump hundreds of tool schemas into the prompt.
 
@@ -14,6 +20,15 @@ It works with **any MCP-capable harness** (Claude Code, Claude Desktop, Cursor, 
 
  *measured here as 2.3 KB of tool JSON, roughly 650 tokens
 ```
+
+## How the disclosure works
+
+1. **Index, not content.** The model starts with five tool definitions (about 650 tokens), not the tools and skills themselves.
+2. **Find.** `find_tools` / `find_skills` return short names and one-line descriptions that match what the model is about to do.
+3. **Describe or load.** Only the one tool schema (`describe_tool`) or one skill (`load_skill`) it picked is read into context. Skill reference files are opened one at a time.
+4. **Act.** `call_tool` runs it. The upstream server is started now, not before.
+
+Nothing is loaded that the model did not ask for, so the context stays small however many skills and servers are behind the gateway.
 
 ## The five tools
 

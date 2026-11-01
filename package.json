@@ -1,7 +1,7 @@
 {
   "name": "lazy-mcp-gateway",
   "version": "1.1.0",
-  "description": "A lazy MCP gateway: five small tools (find_tools, describe_tool, call_tool, find_skills, load_skill) instead of every MCP tool schema and skill listing, so small and local models are not drowned in context.",
+  "description": "Progressive disclosure for local models: hundreds of skills, five tools in context. A lazy MCP gateway (find_tools, describe_tool, call_tool, find_skills, load_skill) in front of any MCP servers and skills.",
   "type": "module",
   "main": "gateway.mjs",
   "bin": { "lazy-mcp-gateway": "gateway.mjs" },
